@@ -58,8 +58,7 @@
 			render_search_results([]);
 			return false;
 		}
-		params = "?startkey=\""+val+"\"&endkey=\""+val+"\ufff0\"&limit=8";
-		
+
 		db.view("search/by_name",{
 			startkey : val,
 			endkey : val+"\ufff0",
