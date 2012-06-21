@@ -1,0 +1,57 @@
+body {
+	background: #000;
+	color: #fff;
+}
+
+#search_container {
+	margin: auto auto;
+	text-align: center;
+	margin-top: 100px;
+}
+
+
+	#MTG-pricing-search {
+		width: 400px;
+		height: 40px;
+		line-height: 38px;
+		font-size: 2em;
+	}
+
+#search_results, #pricing_results {
+	margin: auto auto;
+	width: 400px;
+	line-height: 38px;
+	font-size: 2em;
+}
+#pricing_results {
+	font-size: 1em;
+	background: #ddd;
+	color: #000;
+}
+	#pricing_results .set{
+		height:50px;
+		border-top: 1px #000 solid;
+	}
+	#pricing_results .set img{
+		float:left;
+		clear:left;
+	}
+	#pricing_results .set span{
+		display:block;
+		height:40px;
+		float:left;
+		margin: 3px;
+	}
+	#pricing_results .set span.pricing{
+		float:right;
+	}
+
+	#search_results div{
+		border : 1px #555 solid;
+		padding : 5px;
+	}
+	
+	#search_results div:hover{
+		background-color: #333;
+		cursor: pointer;
+	}
