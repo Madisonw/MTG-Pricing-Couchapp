@@ -2,8 +2,7 @@
 	var searchbox = $("#MTG-pricing-search"),
 		search_results = $("#search_results"),
 		pricing_container = $("#pricing_results"),
-		db,
-		set_data={},val,params;
+		db,set_data={},val,params;
 	function render_search_results(results) {
 		var oResult;
 		$(search_results).empty().show();
@@ -12,7 +11,6 @@
 			oResult = $("<div />",{
 				text : this.key
 			})
-			
 			$(search_results).append(oResult);
 			$(oResult).data("id",this.id);
 		});
@@ -40,7 +38,6 @@
 			)
 		}
 	}
-	//couch.setDatabase("sets");
 	db = $.couch.db("sets");
 	db.view("search/by_name",{
 		includeDocs : true,
@@ -67,7 +64,6 @@
 			}
 		});
 	}).focus();
-	
 	$(search_results).click(function(event) {
 		var selected_id = $(event.target).data("id"),
 			card;
