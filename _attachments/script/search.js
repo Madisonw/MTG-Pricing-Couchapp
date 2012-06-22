@@ -1,4 +1,3 @@
-alert(typeof jQuery);
 (function($) {
 	var searchbox = $("#MTG-pricing-search"),
 		search_results = $("#search_results"),
