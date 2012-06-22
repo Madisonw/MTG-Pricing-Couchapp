@@ -1,4 +1,4 @@
 {
-    "name": "Basic CouchApp",
-    "description": "CouchApp with changes feed and form support."
+    "name": "MTG Pricing on the Couch",
+    "description": "CouchApp for getting pricing data of Magic Cards"
 }
