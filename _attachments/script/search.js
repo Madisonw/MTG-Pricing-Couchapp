@@ -36,6 +36,7 @@
 				)
 			)
 		}
+		$(searchbox).val("");
 		$.getJSON("http://blacklotusproject.com/json/?cards="+((card.name).replace(/\s/g,"+")),function(data){
 			$(data.cards).each(function() {
 				var set = this.url.split("/")[4].replace(/\+/g," ").replace("%3A",":").toLowerCase();
