@@ -26,17 +26,23 @@
 		$(search_results).hide();
 		$(pricing_container).empty().show()
 		.append($("<h2 />",{text:card.name+" ("+card.manacost+")"}));
-		
-		for (set in card.sets) {
+		for (var set in card.sets) {
 			$(pricing_container).append(
-				$("<div />",{"class":"set"}).append(
+				$("<div />",{"class":"set","data-set":set_data[set].longname.toLowerCase()}).append(
 					$("<img />",{src:set_data[set].imgURL,alt:set}),
 					$("<span />",{text:set_data[set].longname}),
-					$("<span />",{text:"$1.00","class":"pricing"})
+					$("<span />",{text:"retrieving...","class":"pricing"})
 					
 				)
 			)
 		}
+		$.getJSON("http://blacklotusproject.com/json/?cards="+((card.name).replace(/\s/g,"+")),function(data){
+			$(data.cards).each(function() {
+				var set = this.url.split("/")[4].replace(/\+/g," ").toLowerCase();
+				$("div[data-set='"+set+"'] span.pricing").html("$"+this.low).addClass("has_data");
+			})
+			$("span.pricing:not(.has_data)").html("no data");
+		})
 	}
 	db = $.couch.db("sets");
 	db.view("search/by_name",{
