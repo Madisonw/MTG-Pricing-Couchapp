@@ -6,12 +6,12 @@ body {
 #search_container {
 	margin: auto auto;
 	text-align: center;
-	margin-top: 100px;
+	margin-top: 20px;
 }
 
 
 	#MTG-pricing-search {
-		width: 400px;
+		width: 100%;
 		height: 40px;
 		line-height: 38px;
 		font-size: 2em;
@@ -19,7 +19,7 @@ body {
 
 #search_results, #pricing_results {
 	margin: auto auto;
-	width: 400px;
+	width: 100%;
 	line-height: 38px;
 	font-size: 2em;
 }
