@@ -3,10 +3,22 @@ body {
 	color: #fff;
 }
 
+a {
+	color: whitesmoke;
+}
+
+a:visited {
+	color: whitesmoke:
+}
+
 #search_container {
 	margin: auto auto;
 	text-align: center;
 	margin-top: 20px;
+}
+
+#about_container {
+	float:left;
 }
 
 
@@ -27,6 +39,17 @@ body {
 	font-size: 1em;
 	background: #ddd;
 	color: #000;
+}
+
+#pricing_results h2 {
+	margin-bottom: 5px;
+}
+
+.details_text {
+	margin-top: -20px;
+	font-size: 0.8em;
+	font-style: italic;
+	line-height: 14px;
 }
 	#pricing_results .set{
 		height:50px;
@@ -55,3 +78,17 @@ body {
 		background-color: #333;
 		cursor: pointer;
 	}
+		.additional_data {
+			clear:both;
+		}
+		.low, .avg, .high {
+		}
+		.low {
+			color: #0000CC;
+		}
+		.avg {
+			color: #CC6600;
+		}
+		.high {
+			color: #990000;
+		}
