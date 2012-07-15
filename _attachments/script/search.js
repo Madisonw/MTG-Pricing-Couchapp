@@ -2,6 +2,7 @@
 	var searchbox = $("#MTG-pricing-search"),
 		search_results = $("#search_results"),
 		pricing_container = $("#pricing_results"),
+		PARTNER_KEY = "TCGTEST",
 		db,set_data={},val,params;
 	function render_search_results(results) {
 		var oResult;
@@ -27,14 +28,37 @@
 		})
 	}
 	function render_card_data(card) {
-		var LOADING = "retrieving...";
+		var LOADING = "retrieving...",
+			set_div,
+			set_name;
 		$(search_results).hide();
 		$(pricing_container).empty().show()
 		.append($("<h2 />",{text:card.name+" ("+card.manacost+")"}))
 		.append($("<span />",{text:"Touch the set bar for details","class":"details_text"}));
+		function get_set_data(set,set_div) {
+			$.ajax({
+				type: "GET",
+				crossDomain:true,
+				url: "http://api.mtg-pricing.com/x2/phl.asmx/p?pk="+PARTNER_KEY+"&s="+set+"&p="+card.name,
+				dataType: "xml",
+				success: function(xml) {
+					console.log(xml);
+					var prices = [];
+					prices.push($(xml).find("lowprice").text());
+					prices.push($(xml).find("avgprice").text());
+					prices.push($(xml).find("hiprice").text());
+					/*
+					$(set_div).find("span.low").html("$");
+					$(set_div).find("span.avg").html("$"+$(xml).find("hiprice").text());
+					$(set_div).find("span.high").html("$"+$(xml).find("hiprice").text());
+					*/
+				}
+			});
+		}
 		for (var set in card.sets) {
+			set_name = set_data[set].longname;
 			$(pricing_container).append(
-				$("<div />",{"class":"set","data-set":set_data[set].longname.toLowerCase()}).append(
+				set_div = $("<div />",{"class":"set","data-set":set_name.toLowerCase()}).append(
 					$("<img />",{src:set_data[set].imgURL,alt:set}),
 					$("<span />",{text:set_data[set].longname}),
 					$("<span />",{text:LOADING,"class":"pricing"}),
@@ -54,6 +78,7 @@
 					)
 				)
 			)
+			//get_set_data(set_name,set_div);
 		}
 		$(".set").click(function() {
 			$(this).find(".additional_data").toggle();
